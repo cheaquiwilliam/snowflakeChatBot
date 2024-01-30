@@ -13,7 +13,7 @@ prompt = st.chat_input()
 
 if prompt:
   st.session_state.messages.append({"role": "user", "content": prompt})
-  response = call_llm_open_ai(st.session_state.messages)
+  response = prompt #call_llm_open_ai(st.session_state.messages)
   st.session_state.messages.append({"role": "assistant", "content": response})
 for msg in st.session_state.messages:
   if msg.get("role") == "user":
