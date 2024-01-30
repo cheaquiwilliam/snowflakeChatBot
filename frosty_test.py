@@ -8,7 +8,7 @@ import re
 st.title("Echo Chatbot")
 
 if "messages" not in st.session_state:
-  st.session_state.messages = [{"role"; "assistant", "content": "How can I help you?"}]
+  st.session_state.messages = [{"role": "assistant", "content": "How can I help you?"}]
   
 
 prompt = st.chat_input()
