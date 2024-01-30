@@ -18,7 +18,7 @@ if prompt:
 for msg in st.session_state.messages:
   if msg.get("role") == "system":
     continue
-  if msg.get("role") == "user:
+  if msg.get("role") == "user":
     st.chat_message("user").write(msg.get("content"))
   else:
     with st.chat_message("assistant"):
