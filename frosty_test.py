@@ -1,7 +1,7 @@
 
 import streamlit as st, re
 
-from utils import *
+# from utils import *
 
 st.title("Conversational Chatbot")
 
