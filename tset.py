@@ -54,7 +54,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
         resp_container = st.empty()
         for delta in client.chat.completions.create(
             model="gpt-3.5-turbo",
-            messages=[{"role": m["role"], "content": m["content"]} for m in unmask_response_statement(st.session_state.messages, mapping=mapped, unmask=False)],
+            messages=[{"role": m["role"], "content": unmask_response_statement(m["content"], mapping=mapped, unmask=False)} for m in st.session_state.messages],
             stream=True,
         ):
             response += unmask_response_statement(delta.choices[0].delta.content or "", mapping=mapped)
