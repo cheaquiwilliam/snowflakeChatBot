@@ -67,6 +67,7 @@ def get_snowflake_ddl(account: str, user: str, password: str, warehouse: str, da
 
                     key = f"{schema}.{name} ({object_type.lower()})"
                     objects_info[key] = {
+                        "database": database,
                         "schema": schema,
                         "name": name,
                         "type": object_type.lower(),
