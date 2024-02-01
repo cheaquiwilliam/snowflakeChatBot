@@ -26,7 +26,7 @@ def mask_ddl_info_with_columns(ddl_info):
         for original, masked in schemas.items():
             ddl = ddl.replace(original, masked)
         for original, masked in tables.items():
-            ddl = ddl.replace(f" {original.split('.')[1]}", f" {masked}")  # Table names
+            ddl = ddl.replace(f" {original, masked)  # Table names
         for original, masked in columns.items():
             ddl = ddl.replace(original, masked)  # Column names
         return ddl
