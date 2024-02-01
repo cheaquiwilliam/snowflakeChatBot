@@ -41,7 +41,7 @@ if "messages" not in st.session_state:
 # Prompt for user input and save
 if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": unmask_response_statement(prompt, mapping=mapped, unmask=False)})
-    print(unmask_response_statement(prompt, mapping=mapped, unmask=False))
+    # print(unmask_response_statement(prompt, mapping=mapped, unmask=False))
 
 # display the existing chat messages
 for message in st.session_state.messages:
@@ -51,7 +51,7 @@ for message in st.session_state.messages:
         st.write(unmask_response_statement(message["content"], mapped))
         if "results" in message:
             st.dataframe(unmask_response_statement(message["results"], mapped))
-        print(unmask_response_statement(message["results"], mapped))
+        # print(unmask_response_statement(message["results"], mapped))
 
 # If last message is not from assistant, we need to generate a new response
 if st.session_state.messages[-1]["role"] != "assistant":
