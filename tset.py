@@ -18,16 +18,16 @@ database = 'GARDEN_PLANTS'
 test = get_snowflake_ddl(account=account, user=user, password=password, warehouse=warehouse, database=database,
                          role=role)
 
-print(test)
+# print(test)
 
 mapped = {}
 masked_ddl, mapped['databases'], mapped['schemas'], mapped['tables'], mapped['columns'] = mask_ddl_info_with_columns(test)
 
-print(masked_ddl)
+# print(masked_ddl)
 
 system_prompt = get_system_prompt(context=masked_ddl)
 
-print(system_prompt)
+# print(system_prompt)
 
 st.title("WitBit")
 
