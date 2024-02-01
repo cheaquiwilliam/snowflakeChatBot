@@ -48,8 +48,8 @@ for message in st.session_state.messages:
     if message["role"] == "system":
         continue
     with st.chat_message(message["role"]):
-        # st.write(unmask_response_statement(message["content"], mapped))
-        st.write(message["content"])
+        st.write(unmask_response_statement(message["content"], mapped))
+        # st.write(message["content"])
         if "results" in message:
           st.dataframe(unmask_response_statement(message["results"], mapped))
         st.write("============================================================================")
