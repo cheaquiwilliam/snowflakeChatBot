@@ -62,7 +62,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
 
         message = {"role": "assistant", "content": unmask_response_statement(response, mapping=mapped)}
         # Parse the response for a SQL query and execute if available
-        sql_match = re.search(r"```sql\n(.*)\n```", response, re.DOTALL)
+        sql_match = unmask_response_statement(re.search(r"```sql\n(.*)\n```", response, re.DOTALL), mapping=mapped, unmask=False)
         if sql_match:
             sql = sql_match.group(1)
             conn = st.connection("snowflake")
