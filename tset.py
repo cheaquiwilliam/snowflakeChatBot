@@ -64,7 +64,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
             stream=True,
         ):
             response += unmask_response_statement(delta.choices[0].delta.content or "", mapping=mapped)
-            resp_container.markdown(response)
+            resp_container.markdown(unmask_response_statement(response, mapping=mapped))
 
         message = {"role": "assistant", "content": response}
         # Parse the response for a SQL query and execute if available
