@@ -22,11 +22,15 @@ def unmask_response_statement(masked_sql, mapping, unmask=True):
         SELECT SOIL_TYPE, SOIL_DESCRIPTION FROM VEGGIES.LU_SOIL_TYPE WHERE SOIL_TYPE_ID > 100;
     """
     # Reverse the mapping for easier lookup
+    databases_rev = {v: k for k, v in mapping['databases'].items()}
     schemas_rev = {v: k for k, v in mapping['schemas'].items()}
     tables_rev = {v: k for k, v in mapping['tables'].items()}
     columns_rev = {v: k for k, v in mapping['columns'].items()}
 
     if unmask:
+        # Unmask database names
+        for masked, original in databases_rev.items():
+            masked_sql = masked_sql.replace(masked, original)
         # Unmask schema names
         for masked, original in schemas_rev.items():
             masked_sql = masked_sql.replace(masked, original)
