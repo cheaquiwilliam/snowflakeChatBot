@@ -70,7 +70,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
         # Parse the response for a SQL query and execute if available
         sql_match = re.search(r"```sql\n(.*)\n```", unmask_response_statement(response, mapping=mapped), re.DOTALL)
         if sql_match:
-            sql = sql_match.group(1)
+            sql = unmask_response_statement(sql_match.group(1), mapping=mapped)
             conn = st.connection("snowflake")
             message["results"] = conn.query(sql)
             st.dataframe(message["results"])
