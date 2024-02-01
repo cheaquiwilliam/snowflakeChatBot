@@ -14,6 +14,7 @@ def mask_ddl_info_with_columns(ddl_info):
     table_map = {}
     column_map = {}
     masked_info = {}
+    database_counter = 1
     schema_counter = 1
     table_counter = 1
     column_counter = 1
@@ -34,7 +35,9 @@ def mask_ddl_info_with_columns(ddl_info):
         original_database, original_schema, original_table, ddl = value['database'], value['schema'], value['name'], value['ddl']
 
         # Mask database
-        database_map[original_database] = 'database_1'
+        if original_database not in database_map:
+            database_map[original_database] = f"database_{database_counter}"
+            database_counter += 1
         masked_database = database_map[original_database]
 
         # Mask schema
@@ -44,7 +47,7 @@ def mask_ddl_info_with_columns(ddl_info):
         masked_schema = schema_map[original_schema]
 
         # Mask table
-        table_key = f"{original_schema}.{original_table}"
+        table_key = original_table
         if table_key not in table_map:
             table_map[table_key] = f"table_{table_counter}"
             table_counter += 1
