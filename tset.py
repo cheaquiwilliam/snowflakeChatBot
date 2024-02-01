@@ -26,7 +26,7 @@ system_prompt = get_system_prompt(context=masked_ddl)
 st.title("WitBit")
 
 # Initialize the chat messages history
-client api_key=st.secrets.OPENAI_API_KEY
+client = st.secrets.OPENAI_API_KEY
 if "messages" not in st.session_state:
     # system prompt includes table information, rules, and prompts the LLM to produce
     # a welcome message to the user
