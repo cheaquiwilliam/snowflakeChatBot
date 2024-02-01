@@ -51,7 +51,7 @@ for message in st.session_state.messages:
         # st.write(unmask_response_statement(message["content"], mapped))
           st.write(message["content"])
         if "results" in message:
-            st.dataframe(unmask_response_statement(message["results"], mapped))
+          st.dataframe(unmask_response_statement(message["results"], mapped))
         # print(unmask_response_statement(message["results"], mapped))
 
 # If last message is not from assistant, we need to generate a new response
