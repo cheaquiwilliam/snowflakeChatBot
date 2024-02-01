@@ -54,7 +54,8 @@ for message in st.session_state.messages:
         if "results" in message:
           st.dataframe(unmask_response_statement(message["results"], mapped))
         if message['role'] == 'assistant':
-          st.write('alksdjfkljakajksdjkdskjdkjskl')
+          st.write('this is what WitBit received:')
+          st.write(unmask_response_statement(message["content"], mapped, unmask=True))
         # print(unmask_response_statement(message["results"], mapped))
 
 # If last message is not from assistant, we need to generate a new response
