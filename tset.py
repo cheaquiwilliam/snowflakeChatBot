@@ -35,7 +35,7 @@ if "messages" not in st.session_state:
 # Prompt for user input and save
 if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": unmask_response_statement(prompt, mapping=mapped, unmask=False)})
-    print(unmask_response_statement(prompt, mapping=mapped, unmask=False))
+    # print(unmask_response_statement(prompt, mapping=mapped, unmask=False))
 
 # display the existing chat messages
 for message in st.session_state.messages:
@@ -60,7 +60,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
             response += unmask_response_statement(delta.choices[0].delta.content or "", mapping=mapped)
             resp_container.markdown(response)
 
-        message = {"role": "assistant", "content": response}
+        message = {"role": "assistant", "content": unmask_response_statement(response, mapping=mapped)}
         # Parse the response for a SQL query and execute if available
         sql_match = re.search(r"```sql\n(.*)\n```", response, re.DOTALL)
         if sql_match:
