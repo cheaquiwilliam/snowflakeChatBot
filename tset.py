@@ -50,12 +50,11 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         # st.write(unmask_response_statement(message["content"], mapped))
         st.write(message["content"])
-        st.write('tsteslkjfdklajfkal;fjkls;afjkl;adfjk')
         if "results" in message:
           st.dataframe(unmask_response_statement(message["results"], mapped))
         if message['role'] == 'assistant':
           st.write('this is what WitBit received:')
-          st.write(unmask_response_statement(message["content"], mapped, unmask=True))
+          st.write(unmask_response_statement(message["content"], mapped, unmask=False))
         # print(unmask_response_statement(message["results"], mapped))
 
 # If last message is not from assistant, we need to generate a new response
