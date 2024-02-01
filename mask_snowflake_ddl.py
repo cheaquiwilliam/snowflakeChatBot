@@ -61,7 +61,7 @@ def mask_ddl_info_with_columns(ddl_info):
             if column not in column_map:
                 column_map[column] = f"column_{column_counter}"
                 column_counter += 1
-        masked_column = column_map[table_key]
+            masked_column = column_map[table_key]
 
         # Generate masked DDL including schema, table, and column names
         masked_ddl = generate_masked_ddl(ddl, database_map, schema_map, table_map, column_map)
